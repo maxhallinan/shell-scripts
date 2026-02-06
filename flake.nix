@@ -22,6 +22,13 @@
       {
         formatter = pkgs.nixfmt-rfc-style;
 
+        packages.worktree-create = pkgs.writeShellApplication {
+          name = "worktree-create";
+
+          runtimeInputs = [ pkgs.git ];
+
+          text = builtins.readFile ./scripts/worktree-create.sh;
+        };
         packages.git-sweep-stage = pkgs.writeShellApplication {
           name = "git-sweep-stage";
 
